@@ -8,6 +8,8 @@ class Main {
   start(): void {
     // draw grid
     this.grid.createGrid();
+    this.grid.startedCells();
+    this.grid.createWall()
   }
 }
 

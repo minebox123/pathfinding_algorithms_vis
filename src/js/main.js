@@ -1,13 +1,14 @@
-var Main = /** @class */ (function () {
-    function Main() {
+class Main {
+    constructor() {
         this.grid = new Grid();
     }
-    Main.prototype.start = function () {
+    start() {
         // draw grid
         this.grid.createGrid();
-    };
-    return Main;
-}());
-var main = new Main();
+        this.grid.startedCells();
+        this.grid.createWall();
+    }
+}
+const main = new Main();
 main.start();
 //# sourceMappingURL=main.js.map

@@ -37,4 +37,19 @@ class Grid {
       }
     }
   }
+
+  startedCells() {
+    let cells = Array.from(document.querySelectorAll(".cell"));
+    cells[cells.length / 2 - 8].classList.add("startedCell");
+    cells[cells.length / 2 + 8].classList.add("startedCell");
+  }
+
+  createWall() {
+    let cells = Array.from(document.querySelectorAll(".cell"));
+    cells.map(cell => {
+      cell.addEventListener("click", () => {
+        cell.classList.add("wall")
+      })
+    })
+  }
 }

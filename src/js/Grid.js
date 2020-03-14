@@ -1,32 +1,43 @@
-var Cell = /** @class */ (function () {
-    function Cell() {
+class Cell {
+    constructor() {
         this.width = 30;
         this.height = 30;
     }
-    Cell.prototype.createCell = function () {
-        var div = document.createElement("div");
-        div.style.width = this.width + "px";
-        div.style.height = this.height + "px";
+    createCell() {
+        let div = document.createElement("div");
+        div.style.width = `${this.width}px`;
+        div.style.height = `${this.height}px`;
         div.classList.add("cell");
         return div;
-    };
-    return Cell;
-}());
-var Grid = /** @class */ (function () {
-    function Grid() {
+    }
+}
+class Grid {
+    constructor() {
         this.cell = new Cell();
     }
-    Grid.prototype.createGrid = function () {
-        var gridDiv = document.querySelector(".grid");
-        var gridWidth = gridDiv.clientWidth;
-        var gridHeight = gridDiv.clientHeight;
-        for (var i = 2; i <= gridHeight / this.cell.height; i++) {
+    createGrid() {
+        let gridDiv = document.querySelector(".grid");
+        let gridWidth = gridDiv.clientWidth;
+        let gridHeight = gridDiv.clientHeight;
+        for (let i = 2; i <= gridHeight / this.cell.height; i++) {
             gridDiv.append(this.cell.createCell());
-            for (var j = 2; j <= gridWidth / this.cell.width; j++) {
+            for (let j = 2; j <= gridWidth / this.cell.width; j++) {
                 gridDiv.append(this.cell.createCell());
             }
         }
-    };
-    return Grid;
-}());
+    }
+    startedCells() {
+        let cells = Array.from(document.querySelectorAll(".cell"));
+        cells[cells.length / 2 - 8].classList.add("startedCell");
+        cells[cells.length / 2 + 8].classList.add("startedCell");
+    }
+    createWall() {
+        let cells = Array.from(document.querySelectorAll(".cell"));
+        cells.map(cell => {
+            cell.addEventListener("click", () => {
+                cell.classList.add("wall");
+            });
+        });
+    }
+}
 //# sourceMappingURL=Grid.js.map
