@@ -1,36 +1,39 @@
-class Grid {
-  private rows: number;
-  private cols: number;
-  private width: number;
-  private height: number;
+class Cell {
+  public width: number;
+  public height: number;
 
   constructor() {
-    this.rows;
-    this.cols;
+    this.width = 30;
+    this.height = 30;
   }
 
-  static createGrid(): void {
+  createCell(): HTMLDivElement {
+    let div = document.createElement("div");
+    div.style.width = `${this.width}px`;
+    div.style.height = `${this.height}px`;
+    div.classList.add("cell");
+    return div;
+  }
+}
+
+class Grid {
+  private cell: Cell;
+
+  constructor() {
+    this.cell = new Cell();
+  }
+
+  createGrid(): void {
     let gridDiv: HTMLDivElement = document.querySelector(".grid");
-    let width = gridDiv.clientWidth;
-    let height = gridDiv.clientHeight;
+    let gridWidth = gridDiv.clientWidth;
+    let gridHeight = gridDiv.clientHeight;
 
-    // let cell = document.createElement("div");
-    // cell.classList.add("cell");
-    // cell.style.width = "30px";
-    // cell.style.height = "30px";
 
-    for (let i = 0; i < Math.floor(width / 30); i++) {
-      let cell = document.createElement("div");
-      cell.classList.add("cell");
-      cell.style.width = "30px";
-      cell.style.height = "30px";
-      gridDiv.append(cell);
-      for (let j = 0; j < Math.floor(height / 30); j++) {
-        let cell = document.createElement("div");
-        cell.classList.add("cell");
-        cell.style.width = "30px";
-        cell.style.height = "30px";
-        gridDiv.append(cell);
+
+    for (let i = 2; i <= gridHeight / this.cell.height; i++) {
+      gridDiv.append(this.cell.createCell());
+      for (let j = 2; j <= gridWidth / this.cell.width; j++) {
+        gridDiv.append(this.cell.createCell());
       }
     }
   }

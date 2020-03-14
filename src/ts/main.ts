@@ -1,8 +1,16 @@
 class Main {
-  public static start(): void {
+  public grid: Grid;
+
+  constructor() {
+    this.grid = new Grid();
+  }
+
+  start(): void {
     // draw grid
-    Grid.createGrid();
+    this.grid.createGrid();
   }
 }
 
-Main.start();
+
+const main = new Main();
+main.start();
