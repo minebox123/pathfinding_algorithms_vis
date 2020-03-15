@@ -1,9 +1,18 @@
 body {
+  position: relative;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
+}
+
+button {
+  position: absolute;
+  top: 2em;
+  right: 2em;
+  padding: .6em 1em;
+  cursor: pointer;
 }
 
 .grid {
@@ -12,35 +21,53 @@ body {
   background: lightblue;
   display: grid;
   grid-template-columns: repeat(auto-fill, 30px);
+  grid-template-rows: repeat(auto-fill, 30px);
   border: 1px solid;
 }
 
-.cell {
+.node {
   cursor: pointer;
-  border-top: 1px solid;
-  border-right: 1px solid
+  /* border-top: 1px solid;
+  border-right: 1px solid */
+  border: 1px solid #000;
 }
 
-.startedCell {
+.node.currentNode {
+  background: #008000;
   cursor: default;
-  background: #000;
 }
 
-.cell.wall {
+.node.targetNode {
+  background: #000;
+  cursor: default;
+}
+
+.node.wall {
   position: relative;
 
 }
 
-.cell.wall::after {
+.node.wall::after {
   content: "";
   height: 100%;
   width: 100%;
-  top: 0;
+  
   left: 0;
+ 
+  right: 0;
+  margin: auto;
   background: rgb(194, 6, 6);
   z-index: 1;
   position: absolute;
-  border: 1px solid #000;
+  opacity: .5;
+}
+
+.node.found {
+  background: yellow;
+}
+
+.node[distance="checked"] {
+  background: green;
 }
 
 

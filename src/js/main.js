@@ -5,7 +5,9 @@ class Main {
     start() {
         // draw grid
         this.grid.createNode();
-        this.grid.startedNodes();
+        this.grid.nodesSetup();
+        document.querySelector("button").addEventListener("click", () => this.grid.targetSearch());
+        // this.grid.targetSearch()
         this.grid.createWall();
     }
 }
