@@ -1,11 +1,11 @@
 class Main {
     constructor() {
-        this.grid = new Grid();
+        this.grid = new Field.Grid();
     }
     start() {
         // draw grid
-        this.grid.createGrid();
-        this.grid.startedCells();
+        this.grid.createNode();
+        this.grid.startedNodes();
         this.grid.createWall();
     }
 }

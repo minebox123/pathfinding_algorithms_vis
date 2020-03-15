@@ -1,14 +1,14 @@
 class Main {
-  public grid: Grid;
+  public grid: Field.Grid;
 
   constructor() {
-    this.grid = new Grid();
+    this.grid = new Field.Grid();
   }
 
   start(): void {
     // draw grid
-    this.grid.createGrid();
-    this.grid.startedCells();
+    this.grid.createNode();
+    this.grid.startedNodes();
     this.grid.createWall()
   }
 }
