@@ -22,14 +22,19 @@ button {
   display: grid;
   grid-template-columns: repeat(auto-fill, 30px);
   grid-template-rows: repeat(auto-fill, 30px);
-  border: 1px solid;
 }
 
-.node {
+.grid > div {
   cursor: pointer;
-  /* border-top: 1px solid;
-  border-right: 1px solid */
-  border: 1px solid #000;
+  border: .5px solid #000;
+}
+
+.source {
+  background: green;
+}
+
+.target {
+  background: yellow;
 }
 
 .node.currentNode {
@@ -44,22 +49,8 @@ button {
 
 .node.wall {
   position: relative;
-
-}
-
-.node.wall::after {
-  content: "";
-  height: 100%;
-  width: 100%;
-  
-  left: 0;
- 
-  right: 0;
-  margin: auto;
-  background: rgb(194, 6, 6);
-  z-index: 1;
-  position: absolute;
-  opacity: .5;
+  background: red;
+  transition: background-color .2s ease;
 }
 
 .node.found {
